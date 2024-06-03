@@ -1,6 +1,16 @@
 package org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.entities.bo;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+
 
 public class QuestionBo {
     private String idQuestionnaire;
@@ -21,6 +31,32 @@ public class QuestionBo {
         this.difficulté = difficulté;
         this.explication = explication;
         this.reference = reference;
+    }
+
+    public List<QuestionBo> extractionQuestionnaire (String fichierCsv){
+        List<QuestionBo> questions = new ArrayList<QuestionBo>();
+        try (CSVReader reader = new CSVReader(new FileReader(fichierCsv))) {
+            String[] nextLine;
+            reader.readNext(); // skip the header line
+            while ((nextLine = reader.readNext()) != null) {
+                if (nextLine.length == 8) {
+                    QuestionBo question = new QuestionBo(
+                            nextLine[0], // idQuestionnaire
+                            nextLine[1], // numeroQuestion
+                            nextLine[2], // langue
+                            nextLine[3], // libelle
+                            nextLine[4], // reponse
+                            nextLine[5], // difficulté
+                            nextLine[6], // explication
+                            nextLine[7]  // reference
+                    );
+                    questions.add(question);
+                }
+            }
+        } catch (IOException | CsvValidationException e) {
+            e.printStackTrace();
+        }
+        return questions;
     }
 
     public String getIdQuestionnaire() {
@@ -98,5 +134,19 @@ public class QuestionBo {
     @Override
     public int hashCode() {
         return Objects.hash(idQuestionnaire, numeroQuestion, langue, libelle, reponse, difficulté, explication, reference);
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionBo{" +
+                "idQuestionnaire='" + idQuestionnaire + '\'' +
+                ", numeroQuestion='" + numeroQuestion + '\'' +
+                ", langue='" + langue + '\'' +
+                ", libelle='" + libelle + '\'' +
+                ", reponse='" + reponse + '\'' +
+                ", difficulte='" + difficulté + '\'' +
+                ", explication='" + explication + '\'' +
+                ", reference='" + reference + '\'' +
+                '}';
     }
 }

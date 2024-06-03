@@ -14,6 +14,10 @@ public class QuestionnaireDTO {
         this.nbQuestionnaireJoué = 0;
     }
 
+    public void ajouterQuestion(QuestionDTO q){
+        listQuestionDTOS.add(q);
+    }
+
     public int getNumeroQuestionnaire() {
         return numeroQuestionnaire;
     }
