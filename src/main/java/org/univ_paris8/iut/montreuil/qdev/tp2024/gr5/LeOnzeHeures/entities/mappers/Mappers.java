@@ -26,11 +26,11 @@ public class Mappers {
     private DifficultéEnum mapDifficulté(String difficulté) {
         switch (difficulté.toLowerCase()) {
             case "facile":
-                return DifficultéEnum.FACILE;
+                return DifficultéEnum.Simple;
             case "moyen":
-                return DifficultéEnum.MOYEN;
+                return DifficultéEnum.Intermédiaire;
             case "difficile":
-                return DifficultéEnum.DIFFICILE;
+                return DifficultéEnum.Expert;
             default:
                 throw new IllegalArgumentException("Difficulté inconnue: " + difficulté);
         }

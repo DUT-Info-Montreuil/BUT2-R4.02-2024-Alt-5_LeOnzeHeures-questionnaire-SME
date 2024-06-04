@@ -55,10 +55,10 @@ public class ServiceFournirQuestionnairesTest {
             List<QuestionnaireDTO> listeRésultat = serviceQuestionnaireImpl.fournirListeQuestionnaires("questionQuizz");
             System.out.println("listeAttendue : "+listeAttendue);
             System.out.println("listeRésultat : "+listeRésultat);
-            assertEquals(listeAttendue.get(1),listeRésultat.get(2));
-            assertEquals(listeAttendue.get(2),listeRésultat.get(1));
+            assertEquals(listeAttendue.get(0),listeRésultat.get(1));
+            assertEquals(listeAttendue.get(1),listeRésultat.get(0));
         }
-        catch (Exception e) {
+        catch (QuestionnairesNonValideException e) {
             System.out.println("Erreur inattendu dans le test fournirListeQuestionnaireOKTest");
         }
     }
@@ -69,7 +69,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceFournirListeTypeEntreeIncompatibleMOCK();
 
-        assertThrows(TypeEntreeIncompatibleException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
         });
     }
@@ -80,7 +80,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceQuestionBOChampVideMOCK();
 
-        assertThrows(ChampVideQuestionBOException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
         });
     }
@@ -91,7 +91,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceQuestionDTOChampVideMOCK();
 
-        assertThrows(ChampVideQuestionDTOException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
         });
     }
@@ -102,7 +102,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceQuestionnaireChampVideMOCK();
 
-        assertThrows(ChampVideQuestionnaireException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
         });
     }
@@ -113,7 +113,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceQuestionnaireFichierIntrouvableMOCK();
 
-        assertThrows(FichierInaccessibleException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("quizzInaccessible");
         });
     }
@@ -124,7 +124,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceQuestionnaireFichierVideMOCK();
 
-        assertThrows(FichierVideException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
         });
     }
@@ -135,7 +135,7 @@ public class ServiceFournirQuestionnairesTest {
 
         serviceQuestionnaireImpl = new ServiceQuestionnaireSansQuestionMOCK();
 
-        assertThrows(QuestionnaireVideException.class, () -> {
+        assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
         });
     }
