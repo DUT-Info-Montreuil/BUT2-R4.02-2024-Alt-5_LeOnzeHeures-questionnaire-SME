@@ -1,5 +1,6 @@
 package org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.services.impl;
 
+import com.opencsv.exceptions.CsvValidationException;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
@@ -10,6 +11,7 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.services.impl.
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.services.models.IQuestionnaireService;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.utils.exceptions.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class ServiceFournirQuestionnairesTest {
 
     // Test 1
     @Test
-    public void fournirListeQuestionnaireOKTest() throws QuestionnaireVideException, ChampVideQuestionnaireException, ChampVideQuestionDTOException, FichierVideException, ChampVideQuestionBOException, FichierInaccessibleException, TypeEntreeIncompatibleException {
+    public void fournirListeQuestionnaireOKTest() throws QuestionnaireVideException, ChampVideQuestionnaireException, ChampVideQuestionDTOException, FichierVideException, ChampVideQuestionBOException, FichierInaccessibleException, TypeEntreeIncompatibleException, CsvValidationException, IOException {
         // MOCK à supprimer lors de l'ajout du vrai service
         //serviceQuestionnaireImpl = new ServiceFournirListeQuestionnairesMockOK();
 
