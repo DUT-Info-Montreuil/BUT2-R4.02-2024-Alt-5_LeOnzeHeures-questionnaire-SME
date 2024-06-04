@@ -21,7 +21,7 @@ public class ServiceFournirQuestionnairesTest {
     @BeforeEach
     void setUp(TestInfo testInfo) throws Exception {
 
-        serviceQuestionnaireImpl = null;
+        serviceQuestionnaireImpl = new Impl();
 
         System.out.println("test " + testInfo.getDisplayName());
     }
@@ -30,7 +30,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void fournirListeQuestionnaireOKTest() throws QuestionnaireVideException, ChampVideQuestionnaireException, ChampVideQuestionDTOException, FichierVideException, ChampVideQuestionBOException, FichierInaccessibleException, TypeEntreeIncompatibleException {
         // MOCK à supprimer lors de l'ajout du vrai service
-        serviceQuestionnaireImpl = new ServiceFournirListeQuestionnairesMockOK();
+        //serviceQuestionnaireImpl = new ServiceFournirListeQuestionnairesMockOK();
 
 
 
@@ -67,7 +67,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void typeEntreeIncompatibleTest() {
 
-        serviceQuestionnaireImpl = new ServiceFournirListeTypeEntreeIncompatibleMOCK();
+        //serviceQuestionnaireImpl = new ServiceFournirListeTypeEntreeIncompatibleMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
@@ -78,7 +78,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void questionBOChampVideTest() {
 
-        serviceQuestionnaireImpl = new ServiceQuestionBOChampVideMOCK();
+        //serviceQuestionnaireImpl = new ServiceQuestionBOChampVideMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
@@ -89,7 +89,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void questionDTOChampVideTest() {
 
-        serviceQuestionnaireImpl = new ServiceQuestionDTOChampVideMOCK();
+        //serviceQuestionnaireImpl = new ServiceQuestionDTOChampVideMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
@@ -100,7 +100,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void questionnaireChampVideTest() {
 
-        serviceQuestionnaireImpl = new ServiceQuestionnaireChampVideMOCK();
+        //serviceQuestionnaireImpl = new ServiceQuestionnaireChampVideMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
@@ -111,7 +111,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void fichierIntrouvableTest() {
 
-        serviceQuestionnaireImpl = new ServiceQuestionnaireFichierIntrouvableMOCK();
+        //serviceQuestionnaireImpl = new ServiceQuestionnaireFichierIntrouvableMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("quizzInaccessible");
@@ -122,7 +122,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void fichierVideTest() {
 
-        serviceQuestionnaireImpl = new ServiceQuestionnaireFichierVideMOCK();
+        //serviceQuestionnaireImpl = new ServiceQuestionnaireFichierVideMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");
@@ -133,7 +133,7 @@ public class ServiceFournirQuestionnairesTest {
     @Test
     public void questionnaireSansQuestionTest() {
 
-        serviceQuestionnaireImpl = new ServiceQuestionnaireSansQuestionMOCK();
+        //serviceQuestionnaireImpl = new ServiceQuestionnaireSansQuestionMOCK();
 
         assertThrows(QuestionnairesNonValideException.class, () -> {
             serviceQuestionnaireImpl.fournirListeQuestionnaires("questionsQuizz");

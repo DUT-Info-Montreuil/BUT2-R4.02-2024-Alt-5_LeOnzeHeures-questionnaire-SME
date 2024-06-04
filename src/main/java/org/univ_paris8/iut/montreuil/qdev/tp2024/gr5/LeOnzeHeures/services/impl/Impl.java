@@ -11,7 +11,7 @@ import java.util.List;
 public class Impl implements IQuestionnaireService {
     private static Impl instance;
     private List<QuestionBo> questionsBO;
-    private Impl(List<QuestionBo> questions){
+    public Impl(List<QuestionBo> questions){
         this.questionsBO = questions;
     }
     @Override
