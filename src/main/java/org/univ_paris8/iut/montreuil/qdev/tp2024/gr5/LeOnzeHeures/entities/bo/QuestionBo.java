@@ -2,8 +2,8 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.entities.bo;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.utils.exceptions.*;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,28 +33,28 @@ public class QuestionBo {
         this.reference = reference;
     }
 
-    public List<QuestionBo> extractionQuestionnaire (String fichierCsv){
+    public List<QuestionBo> extractionQuestionnaire (String fichierCsv) throws QuestionnairesNonValideException, IOException, CsvValidationException {
         List<QuestionBo> questions = new ArrayList<QuestionBo>();
-        try (CSVReader reader = new CSVReader(new FileReader(fichierCsv))) {
-            String[] nextLine;
-            reader.readNext(); // skip the header line
-            while ((nextLine = reader.readNext()) != null) {
-                if (nextLine.length == 8) {
-                    QuestionBo question = new QuestionBo(
-                            nextLine[0], // idQuestionnaire
-                            nextLine[1], // numeroQuestion
-                            nextLine[2], // langue
-                            nextLine[3], // libelle
-                            nextLine[4], // reponse
-                            nextLine[5], // difficulté
-                            nextLine[6], // explication
-                            nextLine[7]  // reference
-                    );
-                    questions.add(question);
-                }
+        CSVReader reader = new CSVReader(new FileReader(fichierCsv));
+        String[] nextLine;
+        reader.readNext(); // skip the header line
+        while ((nextLine = reader.readNext()) != null) {
+            if (nextLine.length == 8) {
+                QuestionBo question = new QuestionBo(
+                        nextLine[0], // idQuestionnaire
+                        nextLine[1], // numeroQuestion
+                        nextLine[2], // langue
+                        nextLine[3], // libelle
+                        nextLine[4], // reponse
+                        nextLine[5], // difficulté
+                        nextLine[6], // explication
+                        nextLine[7]  // reference
+                );
+                questions.add(question);
             }
-        } catch (IOException | CsvValidationException e) {
-            e.printStackTrace();
+        }
+        if(questions == null){
+            throw new QuestionnairesNonValideException();
         }
         return questions;
     }

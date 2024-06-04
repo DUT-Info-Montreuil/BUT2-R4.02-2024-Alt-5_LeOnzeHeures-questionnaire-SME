@@ -4,7 +4,7 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.entities.bo.Qu
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.entities.dto.QuestionnaireDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.services.models.IQuestionnaireService;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.utils.exceptions.FichierInaccessibleException;
-import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.utils.exceptions.TypeIncompatibleException;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr5.LeOnzeHeures.utils.exceptions.TypeEntreeIncompatibleException;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Impl implements IQuestionnaireService {
         this.questionsBO = questions;
     }
     @Override
-    public List<QuestionnaireDTO> fournirListeQuestionnaires(String urlFichier) throws FichierInaccessibleException, TypeIncompatibleException {
+    public List<QuestionnaireDTO> fournirListeQuestionnaires(String urlFichier) throws FichierInaccessibleException, TypeEntreeIncompatibleException {
         return null;
     }
 
